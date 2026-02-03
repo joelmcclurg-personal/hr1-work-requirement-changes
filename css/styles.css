@@ -1,0 +1,791 @@
+/* ==========================================
+   HR1 SNAP Work Requirements Visual Explainer
+   Mobile-first responsive design
+   ========================================== */
+
+/* ==========================================
+   CSS Reset & Base Styles
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    line-height: 1.6;
+    color: #1a202c;
+    background-color: #f7fafc;
+    font-feature-settings: 'tnum'; /* Tabular numbers */
+}
+
+/* ==========================================
+   Typography
+   ========================================== */
+h1, h2, h3, h4 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2rem; /* 32px */
+    color: #2c5282;
+}
+
+h2 {
+    font-size: 1.5rem; /* 24px */
+    color: #2c5282;
+}
+
+h3 {
+    font-size: 1.25rem; /* 20px */
+    color: #2d3748;
+}
+
+h4 {
+    font-size: 1.125rem; /* 18px */
+    color: #2d3748;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #319795;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+    color: #2c7a7b;
+    text-decoration: underline;
+}
+
+ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+strong {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+/* ==========================================
+   Layout Containers
+   ========================================== */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* ==========================================
+   Hero Section
+   ========================================== */
+.hero {
+    background: linear-gradient(135deg, #2c5282 0%, #2d3748 100%);
+    color: white;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.hero h1 {
+    color: white;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero .subtitle {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+.cta-button {
+    background-color: #319795;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover,
+.cta-button:focus {
+    background-color: #2c7a7b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+}
+
+/* ==========================================
+   Summary Section
+   ========================================== */
+.summary-section {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.summary-text {
+    font-size: 1.125rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   Change Cards
+   ========================================== */
+.change-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+}
+
+.change-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    padding: 1.25rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.card-header:hover,
+.card-header:focus {
+    background-color: #f7fafc;
+}
+
+.card-header:focus {
+    outline: 2px solid #319795;
+    outline-offset: -2px;
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.card-title-group {
+    flex: 1;
+}
+
+.card-title {
+    margin-bottom: 0.25rem;
+    font-size: 1.25rem;
+}
+
+.card-summary {
+    color: #718096;
+    margin: 0;
+    font-size: 0.938rem;
+}
+
+.expand-icon {
+    font-size: 1.5rem;
+    color: #718096;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.card-header[aria-expanded="true"] .expand-icon {
+    transform: rotate(45deg);
+}
+
+.card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.card-content[aria-hidden="false"] {
+    max-height: 5000px; /* Large enough for content */
+    padding: 1.5rem 1.25rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* ==========================================
+   Visualizations
+   ========================================== */
+.viz-container {
+    margin-bottom: 2rem;
+}
+
+.visualization {
+    margin: 1rem 0;
+    min-height: 150px;
+}
+
+.viz-caption {
+    color: #4a5568;
+    font-size: 0.938rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Age visualization specific */
+#age-viz {
+    min-height: 200px;
+}
+
+/* Parent visualization specific */
+#parent-viz {
+    min-height: 200px;
+}
+
+/* Exemptions table */
+#exemptions-viz table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+#exemptions-viz th,
+#exemptions-viz td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+#exemptions-viz th {
+    background-color: #f7fafc;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+#exemptions-viz td {
+    color: #4a5568;
+}
+
+#exemptions-viz .status-yes {
+    color: #38a169;
+    font-weight: 600;
+}
+
+#exemptions-viz .status-no {
+    color: #e53e3e;
+    font-weight: 600;
+}
+
+/* ==========================================
+   Detail Sections
+   ========================================== */
+.detail-section {
+    margin-top: 2rem;
+}
+
+.detail-section h4 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #2c5282;
+}
+
+/* ==========================================
+   Interactive Tools
+   ========================================== */
+.interactive-tool {
+    background-color: #f7fafc;
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.interactive-tool label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.interactive-tool input[type="number"] {
+    width: 100%;
+    max-width: 200px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 2px solid #cbd5e0;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.2s ease;
+}
+
+.interactive-tool input[type="number"]:focus {
+    outline: none;
+    border-color: #319795;
+}
+
+.interactive-tool button {
+    background-color: #2c5282;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.interactive-tool button:hover,
+.interactive-tool button:focus {
+    background-color: #2d3748;
+}
+
+.result-text {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    display: none;
+}
+
+.result-text.show {
+    display: block;
+}
+
+.result-text.affected {
+    background-color: #fed7d7;
+    color: #9b2c2c;
+    border: 1px solid #fc8181;
+}
+
+.result-text.not-affected {
+    background-color: #c6f6d5;
+    color: #22543d;
+    border: 1px solid #68d391;
+}
+
+.result-text.maybe {
+    background-color: #feebc8;
+    color: #7c2d12;
+    border: 1px solid #f6ad55;
+}
+
+/* ==========================================
+   Timeline Section
+   ========================================== */
+.timeline-section {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem 1.25rem;
+    margin: 2rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#timeline-viz {
+    min-height: 250px;
+    margin-bottom: 2rem;
+}
+
+.timeline-details {
+    margin: 2rem 0;
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid #319795;
+}
+
+.timeline-date {
+    font-weight: 700;
+    color: #2c5282;
+    font-size: 1.125rem;
+    margin-bottom: 0.25rem;
+}
+
+.timeline-item p {
+    color: #4a5568;
+    margin: 0;
+}
+
+.state-exceptions {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    background-color: #edf2f7;
+    border-radius: 8px;
+}
+
+.state-exceptions h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+}
+
+.states-list {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+/* ==========================================
+   What Happens Next Section
+   ========================================== */
+.what-next-section {
+    padding: 2rem 0;
+}
+
+.what-next-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.info-block {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.info-block h3 {
+    color: #2c5282;
+    margin-bottom: 1rem;
+}
+
+.info-block .note {
+    font-size: 0.938rem;
+    color: #718096;
+    font-style: italic;
+}
+
+.cta-block {
+    background-color: #edf2f7;
+    border: 2px solid #319795;
+}
+
+.cta-block h3 {
+    color: #2c7a7b;
+}
+
+/* ==========================================
+   Sources Section
+   ========================================== */
+.sources-section {
+    padding: 2rem 0 3rem;
+}
+
+.sources-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.sources-block,
+.methodology-block {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.sources-block h3,
+.methodology-block h3 {
+    color: #2c5282;
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+}
+
+.sources-block ul {
+    list-style-type: none;
+    margin-left: 0;
+}
+
+.sources-block li {
+    margin-bottom: 1rem;
+}
+
+.methodology-block p {
+    font-size: 0.938rem;
+    line-height: 1.7;
+}
+
+/* ==========================================
+   Quiz Modal
+   ========================================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    margin: auto;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #718096;
+    cursor: pointer;
+    padding: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: #2d3748;
+}
+
+#quiz-title {
+    margin-bottom: 1.5rem;
+    padding-right: 2rem;
+}
+
+.quiz-question {
+    margin-bottom: 2rem;
+}
+
+.quiz-question h3 {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.quiz-option {
+    background-color: #f7fafc;
+    border: 2px solid #cbd5e0;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.quiz-option:hover,
+.quiz-option:focus {
+    background-color: #edf2f7;
+    border-color: #319795;
+}
+
+.quiz-option.selected {
+    background-color: #e6fffa;
+    border-color: #319795;
+}
+
+.quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.quiz-nav button {
+    background-color: #2c5282;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.quiz-nav button:hover,
+.quiz-nav button:focus {
+    background-color: #2d3748;
+}
+
+.quiz-nav button:disabled {
+    background-color: #cbd5e0;
+    cursor: not-allowed;
+}
+
+.quiz-result {
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.quiz-result.affected {
+    background-color: #fed7d7;
+    border: 2px solid #fc8181;
+}
+
+.quiz-result.not-affected {
+    background-color: #c6f6d5;
+    border: 2px solid #68d391;
+}
+
+.quiz-result h3 {
+    margin-bottom: 1rem;
+}
+
+/* ==========================================
+   Footer
+   ========================================== */
+.footer {
+    background-color: #2d3748;
+    color: #cbd5e0;
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.footer p {
+    font-size: 0.938rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer a {
+    color: #81e6d9;
+}
+
+.footer a:hover,
+.footer a:focus {
+    color: #4fd1c5;
+}
+
+/* ==========================================
+   Responsive Design - Tablet and Up
+   ========================================== */
+@media (min-width: 640px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .card-icon {
+        font-size: 2.5rem;
+        margin-right: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .timeline-item {
+        flex-direction: row;
+        align-items: baseline;
+    }
+
+    .timeline-date {
+        min-width: 180px;
+        margin-right: 1rem;
+        margin-bottom: 0;
+    }
+}
+
+/* ==========================================
+   Responsive Design - Desktop
+   ========================================== */
+@media (min-width: 1024px) {
+    .container {
+        padding: 0 2rem;
+    }
+
+    .hero {
+        padding: 4rem 2rem;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .summary-section {
+        padding: 3rem 0;
+    }
+}
+
+/* ==========================================
+   Accessibility - Reduced Motion
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ==========================================
+   Print Styles
+   ========================================== */
+@media print {
+    .hero,
+    .cta-button,
+    .modal,
+    .footer {
+        display: none;
+    }
+
+    .card-content {
+        max-height: none !important;
+        display: block !important;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    .change-card {
+        page-break-inside: avoid;
+    }
+}

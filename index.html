@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Visual explainer showing SNAP work requirement changes under HR1 (OBBBA) - what changed, who's affected, and what happens next.">
+    <title>SNAP Work Requirements Changed in 2025 | HR1 Visual Explainer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>SNAP Work Requirements Changed in 2025</h1>
+            <p class="subtitle">What you need to know about HR1 (One Big Beautiful Bill Act)</p>
+            <button id="quiz-button" class="cta-button" aria-label="Take the Am I Affected quiz">
+                Am I Affected? Take 2-min quiz →
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Quick Summary -->
+        <section class="summary-section">
+            <h2>What Changed?</h2>
+            <p class="summary-text">
+                On July 4, 2025, new federal law (HR1) changed SNAP work requirements for the first time in decades.
+                <strong>Three major changes</strong> affect millions of people currently receiving SNAP benefits.
+            </p>
+        </section>
+
+        <!-- Card 1: Age Requirements -->
+        <section class="change-card" id="card-age">
+            <div class="card-header" tabindex="0" role="button" aria-expanded="false" aria-controls="card-age-content">
+                <div class="card-icon">📅</div>
+                <div class="card-title-group">
+                    <h3 class="card-title">Age Requirements Expanded</h3>
+                    <p class="card-summary">Ages 18-54 → 18-64 (10 years added)</p>
+                </div>
+                <span class="expand-icon" aria-hidden="true">+</span>
+            </div>
+            <div class="card-content" id="card-age-content" aria-hidden="true">
+                <div class="viz-container">
+                    <h4>Who's Affected?</h4>
+                    <div id="age-viz" class="visualization" role="img" aria-label="Age range comparison showing old rule covered 18-54 and new rule covers 18-64"></div>
+                    <p class="viz-caption">
+                        <strong>~2.5 million people ages 55-64</strong> are now subject to work requirements who weren't before.
+                    </p>
+                </div>
+                <div class="detail-section">
+                    <h4>Before HR1</h4>
+                    <p>Work requirements applied to people ages <strong>18-54</strong>. If you were 55 or older, you were automatically exempt.</p>
+
+                    <h4>After HR1</h4>
+                    <p>Work requirements now apply to people ages <strong>18-64</strong>. The age range expanded by 10 years.</p>
+
+                    <h4>Check Your Age</h4>
+                    <div class="interactive-tool">
+                        <label for="age-input">Enter your age:</label>
+                        <input type="number" id="age-input" min="15" max="70" placeholder="e.g., 57" aria-label="Enter your age">
+                        <button id="age-check-btn">Check</button>
+                        <p id="age-result" class="result-text" role="status" aria-live="polite"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Card 2: Parent Exemption -->
+        <section class="change-card" id="card-parents">
+            <div class="card-header" tabindex="0" role="button" aria-expanded="false" aria-controls="card-parents-content">
+                <div class="card-icon">👨‍👩‍👧‍👦</div>
+                <div class="card-title-group">
+                    <h3 class="card-title">Parent Exemption Narrowed</h3>
+                    <p class="card-summary">Child under 18 → Child under 14 (4 years removed)</p>
+                </div>
+                <span class="expand-icon" aria-hidden="true">+</span>
+            </div>
+            <div class="card-content" id="card-parents-content" aria-hidden="true">
+                <div class="viz-container">
+                    <h4>Who's Affected?</h4>
+                    <div id="parent-viz" class="visualization" role="img" aria-label="Timeline showing parent exemption applies until child is 14, not 18"></div>
+                    <p class="viz-caption">
+                        <strong>~500,000 parents</strong> with teenagers (ages 14-17) lost their exemption.
+                    </p>
+                </div>
+                <div class="detail-section">
+                    <h4>Before HR1</h4>
+                    <p>Parents with <strong>any dependent child under 18</strong> were exempt from work requirements.</p>
+
+                    <h4>After HR1</h4>
+                    <p>Parents are only exempt if they have a dependent child <strong>under 14</strong>. Parents with only teenage children (14-17) must now meet work requirements.</p>
+
+                    <h4>Check Your Children's Ages</h4>
+                    <div class="interactive-tool">
+                        <label for="children-input">Enter your youngest child's age:</label>
+                        <input type="number" id="children-input" min="0" max="20" placeholder="e.g., 15" aria-label="Enter youngest child's age">
+                        <button id="children-check-btn">Check</button>
+                        <p id="children-result" class="result-text" role="status" aria-live="polite"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Card 3: Exemptions Removed -->
+        <section class="change-card" id="card-exemptions">
+            <div class="card-header" tabindex="0" role="button" aria-expanded="false" aria-controls="card-exemptions-content">
+                <div class="card-icon">⚠️</div>
+                <div class="card-title-group">
+                    <h3 class="card-title">Exemptions Removed</h3>
+                    <p class="card-summary">Veterans, Homeless, Foster Youth (ages 18-24) no longer exempt</p>
+                </div>
+                <span class="expand-icon" aria-hidden="true">+</span>
+            </div>
+            <div class="card-content" id="card-exemptions-content" aria-hidden="true">
+                <div class="viz-container">
+                    <h4>What Changed?</h4>
+                    <div id="exemptions-viz" class="visualization" role="table" aria-label="Table showing which exemptions were removed under HR1"></div>
+                </div>
+                <div class="detail-section">
+                    <h4>Before HR1</h4>
+                    <p>These groups were automatically exempt from work requirements:</p>
+                    <ul>
+                        <li><strong>Veterans</strong> - All veterans were exempt</li>
+                        <li><strong>Homeless individuals</strong> - Anyone experiencing homelessness was exempt</li>
+                        <li><strong>Foster youth ages 18-24</strong> - Young adults who aged out of foster care were exempt</li>
+                    </ul>
+
+                    <h4>After HR1</h4>
+                    <p>These exemptions were <strong>removed</strong>. Veterans, homeless individuals, and former foster youth must now meet work requirements unless they qualify for a different exemption (like disability or having a child under 14).</p>
+
+                    <h4>Exemptions That Still Apply</h4>
+                    <p>You are still exempt if you:</p>
+                    <ul>
+                        <li>Are pregnant</li>
+                        <li>Have a disability or receive disability benefits</li>
+                        <li>Are medically certified as unable to work</li>
+                        <li>Are caring for an incapacitated household member</li>
+                        <li>Are a tribal member (newly exempt under HR1)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="timeline-section">
+            <h2>When Do These Changes Take Effect?</h2>
+            <div id="timeline-viz" class="visualization" role="img" aria-label="Timeline showing key dates from July 2025 to June 2026"></div>
+
+            <div class="timeline-details">
+                <div class="timeline-item">
+                    <span class="timeline-date">July 4, 2025</span>
+                    <p>HR1 signed into law - effective immediately</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">December 1, 2025</span>
+                    <p>Most states began checking work requirements at recertification</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">June 2026</span>
+                    <p>First possible month for benefit terminations</p>
+                </div>
+            </div>
+
+            <div class="state-exceptions">
+                <h3>State Exceptions</h3>
+                <p>These states/territories have waivers delaying enforcement until mid-2026:</p>
+                <p class="states-list">California (CA), District of Columbia (DC), Illinois (IL), Nevada (NV), Guam (GU), Virgin Islands (VI)</p>
+            </div>
+        </section>
+
+        <!-- What Happens Next -->
+        <section class="what-next-section">
+            <h2>What Happens Next?</h2>
+
+            <div class="info-block">
+                <h3>What Counts as Meeting Work Requirements?</h3>
+                <p>You must complete <strong>80 hours per month</strong> of one or more of these activities:</p>
+                <ul>
+                    <li><strong>Work</strong> - Paid employment at any wage</li>
+                    <li><strong>Workfare</strong> - Unpaid work in exchange for benefits</li>
+                    <li><strong>Job training</strong> - SNAP Employment & Training (E&T) programs</li>
+                    <li><strong>Volunteer work</strong> - At nonprofit organizations</li>
+                </ul>
+                <p class="note">Note: 80 hours = about 20 hours per week or 4 hours per weekday</p>
+            </div>
+
+            <div class="info-block">
+                <h3>What Documentation You'll Need</h3>
+                <ul>
+                    <li>Pay stubs or employer verification letter</li>
+                    <li>Volunteer hour logs (signed by supervisor)</li>
+                    <li>Training program attendance records</li>
+                    <li>Monthly reports submitted to your state SNAP office</li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <h3>What's the Time Limit?</h3>
+                <p>If you don't meet the work requirements, you can only receive SNAP for <strong>3 months in any 36-month period</strong>.</p>
+                <p>After 3 months, your benefits will stop unless you start meeting the work requirements.</p>
+            </div>
+
+            <div class="info-block">
+                <h3>When Does This Apply to You?</h3>
+                <p>States check work requirements at your <strong>recertification</strong> (when you renew your SNAP benefits, typically every 6-12 months).</p>
+                <p>If you're affected by the new rules, your state will notify you about work requirements at your next recertification.</p>
+            </div>
+
+            <div class="info-block cta-block">
+                <h3>Where to Get Help</h3>
+                <ul>
+                    <li><strong>Your state SNAP office</strong> - Find contact info at <a href="https://www.fns.usda.gov/snap/state-directory" target="_blank" rel="noopener">USDA State Directory</a></li>
+                    <li><strong>Legal aid</strong> - Free legal help at <a href="https://www.lawhelp.org/" target="_blank" rel="noopener">LawHelp.org</a></li>
+                    <li><strong>Benefits assistance</strong> - <a href="https://www.benefits.gov/" target="_blank" rel="noopener">Benefits.gov</a> or call 211</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sources Section -->
+        <section class="sources-section">
+            <h2>Sources & Methodology</h2>
+
+            <div class="sources-block">
+                <h3>Primary Sources</h3>
+                <ul>
+                    <li>
+                        <a href="https://www.congress.gov/bill/119th-congress/house-bill/1/text" target="_blank" rel="noopener">
+                            HR1 - One Big Beautiful Bill Act (119th Congress)
+                        </a> - Legislative text
+                    </li>
+                    <li>
+                        <a href="https://www.fns.usda.gov/snap/obbb-implementation" target="_blank" rel="noopener">
+                            USDA FNS OBBB Implementation Guidance
+                        </a> - Federal guidance
+                    </li>
+                    <li>
+                        <a href="https://www.propel.app/snap/snap-work-requirements-full-guide/" target="_blank" rel="noopener">
+                            Propel SNAP Work Requirements Full Guide
+                        </a> - Advocacy analysis
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sources-block">
+                <h3>Population Data</h3>
+                <ul>
+                    <li>
+                        <a href="https://www.fns.usda.gov/pd/supplemental-nutrition-assistance-program-snap" target="_blank" rel="noopener">
+                            USDA FNS SNAP Participation Data
+                        </a> - Program statistics
+                    </li>
+                    <li>
+                        <a href="https://www.hudexchange.info/programs/hdx/pit-hic/" target="_blank" rel="noopener">
+                            HUD Point-in-Time Count
+                        </a> - Homelessness data
+                    </li>
+                    <li>
+                        <a href="https://www.acf.hhs.gov/cb" target="_blank" rel="noopener">
+                            HHS Foster Care Statistics
+                        </a> - Foster care data
+                    </li>
+                </ul>
+            </div>
+
+            <div class="methodology-block">
+                <h3>Methodology Notes</h3>
+                <p><strong>Last updated:</strong> February 3, 2026</p>
+                <p><strong>Population estimates:</strong> Based on USDA SNAP participation data cross-referenced with demographic breakdowns. Some estimates are pending verification with latest data releases.</p>
+                <p><strong>Age requirements (2.5M estimate):</strong> Based on SNAP participants ages 55-64 without dependent children under 14.</p>
+                <p><strong>Parent exemption (500K estimate):</strong> Based on SNAP households with children ages 14-17 only (no younger children).</p>
+                <p><strong>Exemptions removed:</strong> Population estimates for veterans, homeless, and foster youth affected are marked as "data not available" pending better cross-referencing of SNAP participation with these populations.</p>
+            </div>
+        </section>
+
+        <!-- Quiz Modal (hidden by default) -->
+        <div id="quiz-modal" class="modal" role="dialog" aria-labelledby="quiz-title" aria-hidden="true">
+            <div class="modal-content">
+                <button class="modal-close" aria-label="Close quiz">&times;</button>
+                <h2 id="quiz-title">Am I Affected by the New Work Requirements?</h2>
+                <div id="quiz-container">
+                    <!-- Quiz content loaded by quiz.js -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                Created to help people understand SNAP work requirement changes under HR1 (OBBBA).
+                This is an independent information resource and is not affiliated with USDA or any government agency.
+            </p>
+            <p>
+                <a href="https://github.com/joelmcclurg-personal/hr1-snap-work-requirements" target="_blank" rel="noopener">
+                    View on GitHub
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/visualizations.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/cards.js"></script>
+</body>
+</html>

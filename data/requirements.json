@@ -1,0 +1,225 @@
+{
+  "metadata": {
+    "title": "HR1 (OBBBA) SNAP Work Requirements Changes",
+    "last_updated": "2026-02-03",
+    "sources_verified": "2026-02-03",
+    "notes": "All policy details verified against USDA FNS guidance and legislative text. Population estimates marked where data verification is needed."
+  },
+  "age_requirements": {
+    "pre_hr1": {
+      "min": 18,
+      "max": 54,
+      "years_covered": 37
+    },
+    "post_hr1": {
+      "min": 18,
+      "max": 64,
+      "years_covered": 47
+    },
+    "population_affected": {
+      "estimate": "2.5 million",
+      "age_range": "55-64",
+      "source": "USDA FNS SNAP participation data",
+      "source_url": "https://www.fns.usda.gov/pd/supplemental-nutrition-assistance-program-snap",
+      "methodology": "Based on SNAP participants ages 55-64 who do not have dependent children under 14",
+      "needs_verification": true,
+      "verification_note": "Population estimate needs to be cross-referenced with latest USDA demographic data"
+    }
+  },
+  "parent_exemption": {
+    "pre_hr1": {
+      "child_age_under": 18,
+      "description": "Parents with any dependent child under 18 were exempt from work requirements"
+    },
+    "post_hr1": {
+      "child_age_under": 14,
+      "description": "Parents with dependent children ages 14-17 now subject to work requirements"
+    },
+    "population_affected": {
+      "estimate": "500,000 households",
+      "description": "Parents with children ages 14-17 only (no younger children)",
+      "source": "USDA SNAP household composition data",
+      "source_url": "https://www.fns.usda.gov/pd/supplemental-nutrition-assistance-program-snap",
+      "needs_verification": true,
+      "verification_note": "Need to verify count of SNAP households with children 14-17 but no children under 14"
+    }
+  },
+  "exemptions_removed": {
+    "veterans": {
+      "pre_hr1": true,
+      "post_hr1": false,
+      "description": "Veterans were previously exempt from ABAWD work requirements. This exemption was removed under HR1.",
+      "population_affected": {
+        "total_veterans_on_snap": "1.5 million",
+        "ages_18_64_estimate": "Data not available",
+        "source": "VA and USDA data",
+        "source_url": "https://www.va.gov/",
+        "needs_verification": true,
+        "verification_note": "Need age breakdown of veterans on SNAP to determine how many are ages 18-64 without qualifying exemptions"
+      }
+    },
+    "homeless": {
+      "pre_hr1": true,
+      "post_hr1": false,
+      "description": "Homeless individuals were previously exempt. Under HR1, they must meet work requirements despite lacking stable housing.",
+      "population_affected": {
+        "estimate": "Data not available",
+        "source": "HUD Point-in-Time Count cross-referenced with SNAP participation",
+        "source_url": "https://www.hudexchange.info/programs/hdx/pit-hic/",
+        "needs_verification": true,
+        "verification_note": "HUD counts homeless populations, but overlap with SNAP participation is not well documented"
+      }
+    },
+    "foster_youth": {
+      "pre_hr1": true,
+      "post_hr1": false,
+      "age_range": "18-24",
+      "description": "Young adults who aged out of foster care (ages 18-24) were previously exempt. This exemption was removed.",
+      "population_affected": {
+        "estimate": "50,000",
+        "source": "HHS foster care statistics and SNAP participation estimates",
+        "source_url": "https://www.acf.hhs.gov/cb",
+        "needs_verification": true,
+        "verification_note": "Estimate based on ~20,000 youth aging out annually and SNAP participation rates"
+      }
+    }
+  },
+  "exemptions_remaining": {
+    "pregnant": {
+      "status": "Still exempt",
+      "description": "Pregnant individuals remain exempt from work requirements"
+    },
+    "disabled": {
+      "status": "Still exempt",
+      "description": "Individuals receiving disability benefits remain exempt"
+    },
+    "medically_certified": {
+      "status": "Still exempt",
+      "description": "Individuals medically certified as unable to work remain exempt"
+    },
+    "caring_for_incapacitated": {
+      "status": "Still exempt",
+      "description": "Individuals caring for an incapacitated household member remain exempt"
+    },
+    "tribal_members": {
+      "status": "Newly exempt under HR1",
+      "description": "Tribal members (as defined under Indian Health Care Improvement Act) are newly exempt under HR1"
+    }
+  },
+  "work_requirements_details": {
+    "hours_per_month": 80,
+    "hours_breakdown": {
+      "work": "Paid employment at any wage",
+      "workfare": "Unpaid work in exchange for benefits",
+      "job_training": "SNAP Employment & Training programs",
+      "volunteer": "Volunteer work at nonprofit organizations"
+    },
+    "time_limit": {
+      "months_in_period": 3,
+      "period_length_months": 36,
+      "description": "Can only receive 3 months of benefits in any 36-month period unless meeting work requirements"
+    },
+    "documentation": [
+      "Pay stubs or employer verification",
+      "Volunteer hour logs (signed by supervisor)",
+      "Training program attendance records",
+      "Monthly reporting to state SNAP office"
+    ]
+  },
+  "timeline": {
+    "bill_signed": {
+      "date": "2025-07-04",
+      "description": "HR1 (OBBBA) signed into law",
+      "effective": "Immediately"
+    },
+    "usda_guidance": {
+      "date": "2025-09-30",
+      "description": "Target date for detailed USDA implementation guidance",
+      "status": "Released"
+    },
+    "state_enforcement": {
+      "date": "2025-12-01",
+      "description": "Most states began enforcement checks at recertification",
+      "exceptions": "CA, DC, Guam, IL, NV, Virgin Islands have waivers delaying enforcement"
+    },
+    "first_terminations": {
+      "date": "2026-06-01",
+      "description": "First possible month for benefit terminations due to work requirement non-compliance",
+      "note": "Actual termination timing varies by individual recertification schedule"
+    }
+  },
+  "state_waivers": {
+    "waiver_criteria_change": {
+      "pre_hr1": "States could request waivers for areas with insufficient jobs (discretionary standard)",
+      "post_hr1": "Waivers only available for areas with 10% unemployment rate or higher (much stricter threshold)"
+    },
+    "states_with_waivers": {
+      "california": {
+        "abbreviation": "CA",
+        "waiver_end": "2026-06-30",
+        "note": "Statewide waiver delays enforcement"
+      },
+      "district_of_columbia": {
+        "abbreviation": "DC",
+        "waiver_end": "2026-06-30",
+        "note": "District-wide waiver"
+      },
+      "illinois": {
+        "abbreviation": "IL",
+        "waiver_end": "2026-06-30",
+        "note": "Statewide waiver delays enforcement"
+      },
+      "nevada": {
+        "abbreviation": "NV",
+        "waiver_end": "2026-06-30",
+        "note": "Statewide waiver delays enforcement"
+      },
+      "guam": {
+        "abbreviation": "GU",
+        "waiver_end": "2026-06-30",
+        "note": "Territory-wide waiver"
+      },
+      "virgin_islands": {
+        "abbreviation": "VI",
+        "waiver_end": "2026-06-30",
+        "note": "Territory-wide waiver"
+      }
+    }
+  },
+  "sources": {
+    "primary": [
+      {
+        "title": "HR1 - One Big Beautiful Bill Act (119th Congress)",
+        "url": "https://www.congress.gov/bill/119th-congress/house-bill/1/text",
+        "type": "Legislative text"
+      },
+      {
+        "title": "USDA FNS OBBB Implementation Guidance",
+        "url": "https://www.fns.usda.gov/snap/obbb-implementation",
+        "type": "Federal guidance"
+      },
+      {
+        "title": "Propel SNAP Work Requirements Full Guide",
+        "url": "https://www.propel.app/snap/snap-work-requirements-full-guide/",
+        "type": "Advocacy analysis"
+      }
+    ],
+    "data": [
+      {
+        "title": "USDA FNS SNAP Participation Data",
+        "url": "https://www.fns.usda.gov/pd/supplemental-nutrition-assistance-program-snap",
+        "type": "Program statistics"
+      },
+      {
+        "title": "HUD Point-in-Time Count",
+        "url": "https://www.hudexchange.info/programs/hdx/pit-hic/",
+        "type": "Homelessness data"
+      },
+      {
+        "title": "HHS Foster Care Statistics",
+        "url": "https://www.acf.hhs.gov/cb",
+        "type": "Foster care data"
+      }
+    ]
+  }
+}
