@@ -246,6 +246,49 @@ hr1-snap-work-requirements/
 - All files committed to git
 - Ready to push to origin
 
+### Session 4: Design Refinement - Remove Quiz CTA (February 3, 2026)
+
+**User Feedback:**
+- Remove "Am I Affected?" quiz button from hero section
+- Focus entirely on shareable cards as primary content
+- User: "the shareable cards are what I'm after"
+
+**Changes Made:**
+
+1. **index.html:**
+   - Removed quiz CTA button from hero section (lines 17-19)
+   - Updated subtitle from "What you need to know about HR1 (One Big Beautiful Bill Act)" to "Three major changes affecting millions of SNAP recipients"
+   - Removed entire quiz modal HTML (lines 278-286)
+   - Removed quiz.js script tag from page (line 307)
+
+2. **README.md:**
+   - Updated Features section to remove quiz mention
+   - Changed description to "Age and family calculators (embedded in cards)"
+   - Updated project structure to mark quiz.js as "(archived - not currently used)"
+   - Removed quiz-related testing items from checklist
+
+3. **PROJECT_NOTES.md:**
+   - Added Session 4 documentation
+
+**Files Kept:**
+- `js/quiz.js` - Archived in repository for reference, but not loaded or used
+
+**What Stays:**
+- ✅ Three expandable cards (main feature)
+- ✅ D3.js visualizations in each card
+- ✅ Age calculator inside Age Requirements card
+- ✅ Children's age calculator inside Parent Exemption card
+- ✅ Timeline visualization
+- ✅ "What Happens Next" section with resources
+
+**Design Rationale:**
+- Cleaner, more focused page with cards as immediate primary content
+- No competing CTAs in hero
+- Aligns with core purpose: creating shareable visual explainers
+- Calculators still available within relevant cards
+
+**Status:** ✅ Changes complete, ready to commit and test
+
 ---
 
 *Last updated: February 3, 2026*

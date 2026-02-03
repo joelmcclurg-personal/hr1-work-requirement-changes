@@ -13,8 +13,7 @@ This project helps SNAP recipients understand:
 
 - **Card-based design** - Three expandable cards for each major change
 - **Interactive visualizations** - D3.js charts showing age ranges, parent exemptions, and timelines
-- **"Am I Affected?" quiz** - 4-question decision tree with personalized results
-- **Age calculators** - Check your age or your children's ages instantly
+- **Age and family calculators** - Check your age or your children's ages instantly (embedded in cards)
 - **Mobile-first responsive** - Works on all devices
 - **Accessible** - WCAG AA compliant, keyboard navigation, screen reader support
 
@@ -35,8 +34,8 @@ hr1-snap-work-requirements/
 ├── js/
 │   ├── data.js               # Data loader
 │   ├── visualizations.js     # D3 visualizations (age bars, timeline, etc.)
-│   ├── quiz.js               # "Am I affected?" decision tree
-│   └── cards.js              # Card expand/collapse + calculators
+│   ├── cards.js              # Card expand/collapse + calculators
+│   └── quiz.js               # (archived - not currently used)
 ├── data/
 │   └── requirements.json     # All policy data with sources
 ├── PROJECT_NOTES.md          # Running documentation and decisions
@@ -112,8 +111,6 @@ See `data/requirements.json` for detailed source citations and methodology notes
 - [ ] All cards expand/collapse correctly
 - [ ] Age calculator works (test ages: 17, 25, 57, 65)
 - [ ] Children's age calculator works (test ages: 10, 15, 19)
-- [ ] Quiz opens/closes properly
-- [ ] Quiz decision tree covers all paths
 - [ ] Visualizations render correctly
 - [ ] Responsive on mobile (320px width)
 - [ ] Responsive on tablet (768px width)
