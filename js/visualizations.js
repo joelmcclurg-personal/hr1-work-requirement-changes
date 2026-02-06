@@ -335,7 +335,7 @@ function createTimelineVisualization(data) {
         .attr('width', containerWidth)
         .attr('height', 250)
         .attr('role', 'img')
-        .attr('aria-label', 'Timeline from July 2025 to February 2026')
+        .attr('aria-label', 'Timeline from July 2025 to March 2026')
         .append('g')
         .attr('transform', `translate(${margin.left},${margin.top})`);
 
@@ -343,12 +343,12 @@ function createTimelineVisualization(data) {
     const events = [
         { date: new Date(2025, 6, 4), label: 'Bill Signed', description: 'HR1 signed into law' },
         { date: new Date(2025, 10, 1), label: 'Enforcement Begins', description: 'States began full enforcement' },
-        { date: new Date(2026, 1, 1), label: 'First Terminations', description: 'First benefit terminations' }
+        { date: new Date(2026, 2, 1), label: 'First Terminations', description: 'First benefit terminations' }
     ];
 
     // Scale
     const xScale = d3.scaleTime()
-        .domain([new Date(2025, 6, 1), new Date(2026, 1, 1)])
+        .domain([new Date(2025, 6, 1), new Date(2026, 2, 1)])
         .range([0, width]);
 
     // Timeline line

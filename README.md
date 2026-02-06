@@ -105,6 +105,19 @@ See `data/requirements.json` for detailed source citations and methodology notes
 - Homeless individuals (previously exempt)
 - Foster youth ages 18-24 (previously exempt)
 
+## Published Writing
+
+- **Substack**: [SNAP Visualizations Case Study](https://joelmcclurg.substack.com/) *(paste final URL)*
+- **LinkedIn**: [SNAP Visualizations Post](https://linkedin.com/) *(paste final URL)*
+
+Both posts cover this project alongside the companion SNAP Restriction Waivers Map as a paired case study.
+
+## Companion Project
+
+- **SNAP Restriction Waivers Map**: [https://joelmcclurg.github.io/snap-restriction-waivers-visualization/](https://joelmcclurg.github.io/snap-restriction-waivers-visualization/)
+
+An interactive scrollytelling visualization showing how 18 states are implementing new restrictions on SNAP purchases through approved waivers. The Substack post covers both projects together as a case study in data visualization for public policy.
+
 ## Testing
 
 ### Manual Testing Checklist
@@ -162,4 +175,4 @@ For questions about your SNAP benefits, contact your state SNAP office:
 
 ---
 
-*Last updated: February 3, 2026*
+*Last updated: February 6, 2026*

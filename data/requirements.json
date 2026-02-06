@@ -1,8 +1,8 @@
 {
   "metadata": {
     "title": "H.R. 1 (OBBBA) SNAP Work Requirements Changes",
-    "last_updated": "2026-02-05",
-    "sources_verified": "2026-02-05",
+    "last_updated": "2026-02-06",
+    "sources_verified": "2026-02-06",
     "notes": "All policy details verified against USDA FNS guidance and legislative text. Population estimates marked where data verification is needed."
   },
   "age_requirements": {
@@ -138,9 +138,9 @@
       "exceptions": "CA, DC, Guam, IL, NV, Virgin Islands had waivers delaying enforcement"
     },
     "first_terminations": {
-      "date": "2026-02-01",
+      "date": "2026-03-01",
       "description": "First benefit terminations for ABAWD non-compliance",
-      "note": "Nov + Dec + Jan = 3 ABAWD months; first terminations begin February 2026"
+      "note": "November is NOT a countable month per FNS Nov 13, 2025 guidance. Dec + Jan + Feb = 3 ABAWD countable months; first terminations begin March 2026"
     }
   },
   "state_waivers": {
