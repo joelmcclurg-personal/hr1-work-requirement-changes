@@ -153,6 +153,23 @@ strong {
     margin: 0 auto;
 }
 
+.card-explainer {
+    background: #f7fafc;
+    border-left: 4px solid #319795;
+    padding: 1rem 1.25rem;
+    margin-top: 1.5rem;
+    border-radius: 4px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-explainer p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #2d3748;
+}
+
 /* ==========================================
    Change Cards
    ========================================== */
@@ -188,12 +205,6 @@ strong {
     outline-offset: -2px;
 }
 
-.card-icon {
-    font-size: 2rem;
-    margin-right: 1rem;
-    flex-shrink: 0;
-}
-
 .card-title-group {
     flex: 1;
 }
@@ -209,16 +220,56 @@ strong {
     font-size: 0.938rem;
 }
 
+.share-card-btn {
+    background: none;
+    border: none;
+    color: #319795;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: auto;
+    margin-right: 0.5rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
+}
+
+.share-card-btn:hover {
+    opacity: 1;
+}
+
+.share-card-btn svg {
+    display: block;
+}
+
 .expand-icon {
     font-size: 1.5rem;
     color: #718096;
     transition: transform 0.3s ease;
     flex-shrink: 0;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
 }
 
 .card-header[aria-expanded="true"] .expand-icon {
     transform: rotate(45deg);
+}
+
+.copy-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2d3748;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.copy-toast.fade-out {
+    opacity: 0;
 }
 
 .card-content {
@@ -310,83 +361,43 @@ strong {
 }
 
 /* ==========================================
-   Interactive Tools
+   Positive Change Callout
    ========================================== */
-.interactive-tool {
-    background-color: #f7fafc;
+.positive-change-callout {
+    background: #c6f6d5;
+    border-left: 4px solid #38a169;
     padding: 1.25rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-}
-
-.interactive-tool label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #2d3748;
-}
-
-.interactive-tool input[type="number"] {
-    width: 100%;
-    max-width: 200px;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: 2px solid #cbd5e0;
+    margin: 1.5rem 0;
     border-radius: 6px;
-    margin-bottom: 0.75rem;
-    transition: border-color 0.2s ease;
 }
 
-.interactive-tool input[type="number"]:focus {
-    outline: none;
-    border-color: #319795;
-}
-
-.interactive-tool button {
-    background-color: #2c5282;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.interactive-tool button:hover,
-.interactive-tool button:focus {
-    background-color: #2d3748;
-}
-
-.result-text {
-    margin-top: 1rem;
-    padding: 1rem;
-    border-radius: 6px;
-    font-weight: 600;
-    display: none;
-}
-
-.result-text.show {
-    display: block;
-}
-
-.result-text.affected {
-    background-color: #fed7d7;
-    color: #9b2c2c;
-    border: 1px solid #fc8181;
-}
-
-.result-text.not-affected {
-    background-color: #c6f6d5;
+.positive-change-callout h4 {
     color: #22543d;
-    border: 1px solid #68d391;
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
 }
 
-.result-text.maybe {
-    background-color: #feebc8;
-    color: #7c2d12;
-    border: 1px solid #f6ad55;
+.positive-change-callout p {
+    color: #22543d;
+    margin: 0;
+}
+
+/* ==========================================
+   Additional Changes Note
+   ========================================== */
+.additional-changes-note {
+    background: #edf2f7;
+    border-left: 4px solid #4a5568;
+    padding: 1.25rem;
+    margin: 2rem auto;
+    border-radius: 6px;
+    max-width: 900px;
+}
+
+.additional-changes-note p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #2d3748;
 }
 
 /* ==========================================
@@ -447,8 +458,13 @@ strong {
 }
 
 .states-list {
-    font-weight: 600;
     color: #2d3748;
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+.states-list li {
+    margin-bottom: 0.4rem;
 }
 
 /* ==========================================
@@ -474,6 +490,17 @@ strong {
 .info-block h3 {
     color: #2c5282;
     margin-bottom: 1rem;
+}
+
+.info-block-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.info-block-header h3 {
+    margin-bottom: 0;
+    flex: 1;
 }
 
 .info-block .note {
@@ -534,151 +561,6 @@ strong {
 }
 
 /* ==========================================
-   Quiz Modal
-   ========================================== */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    overflow-y: auto;
-    padding: 1rem;
-}
-
-.modal.show {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background-color: white;
-    border-radius: 12px;
-    padding: 2rem;
-    max-width: 600px;
-    width: 100%;
-    position: relative;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    margin: auto;
-}
-
-.modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #718096;
-    cursor: pointer;
-    padding: 0;
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.2s ease;
-}
-
-.modal-close:hover,
-.modal-close:focus {
-    color: #2d3748;
-}
-
-#quiz-title {
-    margin-bottom: 1.5rem;
-    padding-right: 2rem;
-}
-
-.quiz-question {
-    margin-bottom: 2rem;
-}
-
-.quiz-question h3 {
-    margin-bottom: 1rem;
-    font-size: 1.125rem;
-}
-
-.quiz-options {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.quiz-option {
-    background-color: #f7fafc;
-    border: 2px solid #cbd5e0;
-    padding: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-align: left;
-}
-
-.quiz-option:hover,
-.quiz-option:focus {
-    background-color: #edf2f7;
-    border-color: #319795;
-}
-
-.quiz-option.selected {
-    background-color: #e6fffa;
-    border-color: #319795;
-}
-
-.quiz-nav {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-}
-
-.quiz-nav button {
-    background-color: #2c5282;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.quiz-nav button:hover,
-.quiz-nav button:focus {
-    background-color: #2d3748;
-}
-
-.quiz-nav button:disabled {
-    background-color: #cbd5e0;
-    cursor: not-allowed;
-}
-
-.quiz-result {
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-}
-
-.quiz-result.affected {
-    background-color: #fed7d7;
-    border: 2px solid #fc8181;
-}
-
-.quiz-result.not-affected {
-    background-color: #c6f6d5;
-    border: 2px solid #68d391;
-}
-
-.quiz-result h3 {
-    margin-bottom: 1rem;
-}
-
-/* ==========================================
    Footer
    ========================================== */
 .footer {
@@ -704,16 +586,64 @@ strong {
 }
 
 /* ==========================================
+   Federal Definition Tooltips
+   ========================================== */
+.def-tooltip {
+    position: relative;
+    border-bottom: 1px dotted #718096;
+    cursor: help;
+}
+
+.def-tooltip::after {
+    content: attr(data-tip);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 6px;
+    width: 280px;
+    max-width: 80vw;
+    background: #2d3748;
+    color: #fff;
+    font-size: 0.813rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 0.625rem 0.75rem;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s ease, visibility 0.15s ease;
+}
+
+/* Only show on devices that support hover */
+@media (hover: hover) {
+    .def-tooltip:hover::after,
+    .def-tooltip:focus::after {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Keyboard accessibility */
+.def-tooltip:focus {
+    outline: 2px solid #319795;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.def-tooltip:focus::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ==========================================
    Responsive Design - Tablet and Up
    ========================================== */
 @media (min-width: 640px) {
     .hero h1 {
         font-size: 2.5rem;
-    }
-
-    .card-icon {
-        font-size: 2.5rem;
-        margin-right: 1.5rem;
     }
 
     .card-title {

@@ -1,4 +1,4 @@
-# HR1 (OBBBA) SNAP Work Requirements Visual Explainer - Project Notes
+# H.R. 1 (OBBBA) SNAP Work Requirements Visual Explainer - Project Notes
 
 > **For future sub-agents:** This document captures the complete context, research, design decisions, and implementation plan for this visual explainer project. Use this as your primary reference.
 
@@ -7,7 +7,7 @@
 ## Project Overview
 
 ### What This Is
-A visual explainer/infographic showing SNAP work requirement changes before and after HR1 (OBBBA - One Big Beautiful Bill Act).
+A visual explainer/infographic showing SNAP work requirement changes before and after H.R. 1 (OBBBA - One Big Beautiful Bill Act).
 
 ### Inspiration Project
 Based on the approach used for the **SNAP Restriction Waivers** scrollytelling visualization:
@@ -30,15 +30,15 @@ Based on the approach used for the **SNAP Restriction Waivers** scrollytelling v
 
 ## Phase 1: Research Context ✅
 
-### What is HR1 (OBBBA)?
+### What is H.R. 1 (OBBBA)?
 The **"One Big Beautiful Bill Act"** signed July 4, 2025. A major reconciliation bill that included significant changes to SNAP work requirements among other provisions.
 
 **Sources:**
-- [Congress.gov HR1 Text](https://www.congress.gov/bill/119th-congress/house-bill/1/text)
+- [Congress.gov H.R. 1 Text](https://www.congress.gov/bill/119th-congress/house-bill/1/text)
 - [Propel SNAP Work Requirements Guide](https://www.propel.app/snap/snap-work-requirements-full-guide/)
 - [USDA FNS OBBB Implementation Memo](https://www.fns.usda.gov/snap/obbb-implementation)
 
-### SNAP Work Requirements Pre-HR1 (Before July 2025)
+### SNAP Work Requirements Pre-H.R. 1 (Before July 2025)
 
 **General Work Requirements:**
 - Register for work, accept job offers, participate in SNAP E&T programs
@@ -55,11 +55,11 @@ The **"One Big Beautiful Bill Act"** signed July 4, 2025. A major reconciliation
 - States could request waivers for areas with insufficient jobs
 - More flexible criteria
 
-### SNAP Work Requirements Post-HR1 (After July 2025)
+### SNAP Work Requirements Post-H.R. 1 (After July 2025)
 
 **Key Changes:**
 
-| Category | Pre-HR1 | Post-HR1 |
+| Category | Pre-H.R. 1 | Post-H.R. 1 |
 |----------|---------|----------|
 | **Age range** | 18-54 | **18-64** (10-year expansion) |
 | **Parent exemption** | Child under 18 | **Child under 14** (4-year reduction) |
@@ -74,11 +74,10 @@ The **"One Big Beautiful Bill Act"** signed July 4, 2025. A major reconciliation
 ### Implementation Timeline
 
 - **July 4, 2025:** Bill signed, effective immediately
-- **Sept 30, 2025:** Target for detailed USDA guidance
-- **Dec 1, 2025:** Most states began enforcement checks
-- **Dec 2025-2026:** Enforcement hits at recertification (6-12 month cycles)
-- **June 2026:** First possible month for benefit terminations
-- **Exceptions:** CA, DC, Guam, IL, NV, Virgin Islands have waivers delaying into 2026
+- **Oct 3, 2025:** USDA enforcement and waiver implementation memos issued ([FNS memo](https://www.fns.usda.gov/snap/obbb-abawd-waivers-implementation))
+- **Nov 1, 2025:** Most states began enforcing expanded work requirements ([FFESP](https://ffesp.org/usda-new-work-requirements-for-snap/), [NACo](https://www.naco.org/resource/hr-1-and-supplemental-nutrition-assistance-program-snap-what-counties-should-know))
+- **Feb 1, 2026:** First benefit terminations (Nov + Dec + Jan = 3 ABAWD months)
+- **Waivers:** CA (enforcement delayed to June 2026), NV (ended Jan 31), IL (ended Nov 2025), DC (early 2026), Guam & VI (unverified)
 
 ---
 
@@ -202,7 +201,7 @@ hr1-snap-work-requirements/
 - Read previous project documentation (SNAP waivers, food system infographic)
 - Identified running notes pattern from food system PROJECT_NOTES.md
 - Created plan file
-- Researched HR1/OBBBA work requirements (web search, USDA, Propel sources)
+- Researched H.R. 1/OBBBA work requirements (web search, USDA, Propel sources)
 - Launched Plan agent for strategic analysis (initially recommended scrollytelling)
 - User provided critical reframing: "Make it a reference tool, not a story"
 - Revised to modular card-based information design approach
@@ -257,7 +256,7 @@ hr1-snap-work-requirements/
 
 1. **index.html:**
    - Removed quiz CTA button from hero section (lines 17-19)
-   - Updated subtitle from "What you need to know about HR1 (One Big Beautiful Bill Act)" to "Three major changes affecting millions of SNAP recipients"
+   - Updated subtitle from "What you need to know about H.R. 1 (One Big Beautiful Bill Act)" to "Three major changes affecting millions of SNAP recipients"
    - Removed entire quiz modal HTML (lines 278-286)
    - Removed quiz.js script tag from page (line 307)
 
@@ -289,6 +288,129 @@ hr1-snap-work-requirements/
 
 **Status:** ✅ Changes complete, ready to commit and test
 
+### Session 5: Federal Definition Tooltips (February 5, 2026)
+
+**Goal:** Add hover tooltips to exemption category names showing formal federal definitions from 7 CFR, so readers can see exactly what each legal term means.
+
+**Fact-Check (completed before implementation):**
+All Exemptions Removed card content verified against:
+- 7 CFR 271.2 (homeless definition)
+- 7 CFR 273.24 (foster youth, ABAWD rules)
+- 7 CFR 273.7(b)(1) (pregnant, disabled exemptions)
+- USDA FNS OBBB implementation guidance
+- H.R. 1 legislative text (tribal member addition)
+
+**Definitions sourced and applied:**
+
+| Category | Federal Source | Citation |
+|---|---|---|
+| Veterans | Food and Nutrition Act §6(o), per FRA 2023 | Broader than 38 U.S.C. §101 — all discharge statuses |
+| Homeless | 7 CFR 271.2 | Lacks fixed nighttime residence; shelter/halfway house/temp stay ≤90 days |
+| Foster Youth (18-24) | 7 CFR 273.24(g) | In foster care on 18th birthday; eligible until 25th birthday |
+| Pregnant | 7 CFR 273.7(b)(1) | Verified per State agency procedures |
+| Disabled | 7 CFR 273.7(b)(1) | Receives disability benefits or medically certified unfit |
+| Tribal Member | 25 U.S.C. §1603(13), added by H.R. 1 | Member of federally recognized Indian Tribe per IHCIA |
+
+**Changes Made:**
+
+1. **`css/styles.css`** — Added `.def-tooltip` class (~50 lines):
+   - Dotted underline + `cursor: help` to signal hoverability
+   - `::after` pseudo-element using `content: attr(data-tip)` for tooltip display
+   - Dark tooltip box (#2d3748) with white text, 280px wide, rounded corners
+   - `@media (hover: hover)` — tooltips only activate on hover-capable devices
+   - `tabindex="0"` + `:focus` styles for keyboard accessibility (outline on focus)
+   - Smooth opacity transition (0.15s)
+
+2. **`js/visualizations.js`** — Exemptions table (lines ~266-306):
+   - Wrapped each `<strong>` category name with `<span class="def-tooltip" tabindex="0" data-tip="...">`
+   - Added **Tribal Member** row to the table (was previously missing):
+     - Before HR1: ✗ Not Exempt
+     - After HR1: ✓ Exempt
+   - All 6 categories now have federal definition tooltips
+
+3. **`index.html`** — Exemptions card bullet lists (lines ~148-173):
+   - "Before H.R. 1" list: Veterans, Homeless individuals, Foster youth ages 18-24
+   - "Exemptions That Still Apply" list: pregnant, disability, tribal member
+   - Positive-change callout: tribal members mention
+   - Total of 7 tooltip instances in HTML
+
+**Technical approach:** Pure CSS — no JavaScript needed. Tooltip text stored in `data-tip` attribute and displayed via `::after` pseudo-element. Mobile-safe via `@media (hover: hover)` media query.
+
+**Testing:**
+- Hard refresh http://localhost:8002/
+- Expand Exemptions Removed card
+- Hover over any dotted-underline category name → tooltip appears with federal definition
+- Tab through tooltips with keyboard → same tooltip appears on focus
+- Resize to mobile width → tooltips don't appear (no hover capability)
+
+**Status:** ✅ Implementation complete
+
 ---
 
-*Last updated: February 3, 2026*
+### Session 6: Timeline & Waiver Date Corrections (February 5, 2026)
+
+**Goal:** Fix 3 incorrect dates in the main timeline and update waiver end dates based on source verification.
+
+**Errors Found (compared against USDA FNS memos, FFESP, NACo, state-level sources):**
+
+| Milestone | Was (Wrong) | Corrected To | Source |
+|---|---|---|---|
+| USDA Guidance | Sept 30, 2025 | **Oct 3, 2025** | [FNS Waivers Memo](https://www.fns.usda.gov/snap/obbb-abawd-waivers-implementation) |
+| State enforcement | Dec 1, 2025 | **Nov 1, 2025** | [FFESP](https://ffesp.org/usda-new-work-requirements-for-snap/), [NACo](https://www.naco.org/resource/hr-1-and-supplemental-nutrition-assistance-program-snap-what-counties-should-know) |
+| First terminations | June 2026 | **Feb 1, 2026** | Math: Nov + Dec + Jan = 3 ABAWD months |
+
+**Waiver corrections:**
+- California: June 30, 2026 → **Jan 31, 2026** ([CA Food Banks](https://www.cafoodbanks.org/abawd/))
+- Illinois: June 30, 2026 → **Nov 2025** (already ended; [IL DHS](https://www.dhs.state.il.us/page.aspx?item=175082))
+- Nevada: June 30, 2026 → **Jan 31, 2026** ([FNS response](https://fns-prod.azureedge.us/sites/default/files/resource-files/nv-abawd-response-fy2025.pdf))
+- DC: June 30, 2026 → **~early 2026** (approx; [DC DHS](https://dhs.dc.gov/page/snap-work-requirements))
+- Guam & VI: Kept at June 30, 2026 (unverified, conservative)
+
+**Note on legal fluidity:** H.R. 1 changed waiver criteria to require >10% unemployment. USDA attempted to terminate all "lack of sufficient jobs" waivers by Nov 2, 2025. A federal court partially reversed this. State Exceptions box rewritten to avoid over-specific dates given legal uncertainty.
+
+**Files Modified:**
+1. `data/requirements.json` — Timeline dates, waiver dates, metadata dates
+2. `index.html` — Timeline items, aria-label, State Exceptions box, last updated
+3. `js/visualizations.js` — D3 events array, scale domain, aria-label
+4. `PROJECT_NOTES.md` — Implementation Timeline section, this session entry
+
+**Status:** ✅ All corrections applied
+
+---
+
+### Session 7: Timeline Corrections Round 2 — Full Fact-Check (February 5, 2026)
+
+**Goal:** Deep fact-check of all timeline dates against multiple authoritative sources. Remove USDA Guidance dot to simplify to 3 events. Fix major California waiver error.
+
+**Sources consulted:**
+- FRAC (Food Research & Action Center) — [Q&A blog post, Oct 10 2025](https://frac.org/blog/qa-how-does-the-new-snap-time-limits-policy-affect-you-what-states-and-families-need-to-know)
+- CBPP (Center on Budget and Policy Priorities) — [Sep 10 2025 analysis](https://www.cbpp.org/research/food-assistance/many-low-income-people-will-soon-begin-to-lose-food-assistance-under); [Implementation timeline](https://www.cbpp.org/research/federal-budget/implementing-the-harmful-republican-megabill-a-timeline)
+- USDA FNS — [OBBB landing page](https://www.fns.usda.gov/obbb); [ABAWD Waivers Memo](https://www.fns.usda.gov/snap/obbb-abawd-waivers-implementation); [ABAWD Exceptions Memo](https://www.fns.usda.gov/snap/obbb-abawd-exemptions-implementation)
+- State sources — IL DHS, CA Food Banks, NY OTDA, ABC News
+
+**Key corrections:**
+
+| Item | Was | Corrected To | Why |
+|---|---|---|---|
+| USDA Guidance dot | Shown on timeline | **Removed** | Simplified to 3 dots per user decision |
+| Timeline scale end | March 31, 2026 | **Feb 1, 2026** | Last dot is the right edge of the scale |
+| California waiver | "Ended Jan 31, 2026" | **"Enforcement delayed until June 2026"** | FRAC/CA Food Banks confirm CA chose to delay enforcement until June 1, 2026. Three counties (Colusa, Imperial, Tulare) retain waivers through Oct 2026 |
+| Nevada note | "Partial waiver approval ended Jan 31" | **"Statewide waiver expired Jan 31, 2026"** | CBPP confirms statewide |
+| State Exceptions box | Inline text format | **Structured `<ul>` list** | Better readability |
+
+**First Terminations date rationale:**
+- CBPP says some could be cut as early as January 2026 (non-waiver states, Sept recertification)
+- FRAC says March 2026 for waiver states
+- We chose **February 2026** as the middle-ground date representing the first wave of terminations
+
+**Files Modified:**
+1. `js/visualizations.js` — Removed USDA Guidance event, changed scale domain end to Feb 1
+2. `index.html` — Rewrote State Exceptions box with `<ul>` list and corrected CA info
+3. `data/requirements.json` — Removed `usda_guidance` entry, fixed CA waiver to June 2026, updated NV note
+4. `PROJECT_NOTES.md` — Updated Implementation Timeline, added this session entry
+
+**Status:** ✅ All round-2 corrections applied
+
+---
+
+*Last updated: February 5, 2026*

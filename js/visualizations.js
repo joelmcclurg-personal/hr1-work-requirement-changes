@@ -43,7 +43,7 @@ function createAgeVisualization(data) {
 
     // Scale
     const xScale = d3.scaleLinear()
-        .domain([0, 70])
+        .domain([15, 70])
         .range([0, width]);
 
     // Old rule bar
@@ -51,35 +51,54 @@ function createAgeVisualization(data) {
         .attr('x', xScale(ageData.pre_hr1.min))
         .attr('y', 30)
         .attr('width', xScale(ageData.pre_hr1.max) - xScale(ageData.pre_hr1.min))
-        .attr('height', 40)
-        .attr('fill', '#718096')
-        .attr('opacity', 0.7)
+        .attr('height', 30)
+        .attr('fill', '#d1d5db')
         .attr('rx', 4);
 
     // Old rule label
     svg.append('text')
-        .attr('x', xScale((ageData.pre_hr1.min + ageData.pre_hr1.max) / 2))
-        .attr('y', 20)
-        .attr('text-anchor', 'middle')
+        .attr('x', 0)
+        .attr('y', 18)
+        .attr('text-anchor', 'start')
         .attr('font-size', '14px')
         .attr('font-weight', '600')
         .attr('fill', '#2d3748')
         .text('Before HR1');
 
+    // "18" label on left edge of Before HR1 bar
+    svg.append('text')
+        .attr('x', xScale(ageData.pre_hr1.min) + 6)
+        .attr('y', 49)
+        .attr('text-anchor', 'start')
+        .attr('font-size', '11px')
+        .attr('font-weight', '700')
+        .attr('fill', '#2d3748')
+        .text('18');
+
+    // "54" label on right edge of Before HR1 bar
+    svg.append('text')
+        .attr('x', xScale(ageData.pre_hr1.max) - 6)
+        .attr('y', 49)
+        .attr('text-anchor', 'end')
+        .attr('font-size', '11px')
+        .attr('font-weight', '700')
+        .attr('fill', '#2d3748')
+        .text('54');
+
     // New rule bar
     svg.append('rect')
         .attr('x', xScale(ageData.post_hr1.min))
         .attr('y', 90)
-        .attr('width', xScale(ageData.post_hr1.max) - xScale(ageData.post_hr1.min))
-        .attr('height', 40)
-        .attr('fill', '#2c5282')
+        .attr('width', xScale(ageData.pre_hr1.max) - xScale(ageData.post_hr1.min))
+        .attr('height', 30)
+        .attr('fill', '#4b5563')
         .attr('rx', 4);
 
     // New rule label
     svg.append('text')
-        .attr('x', xScale((ageData.post_hr1.min + ageData.post_hr1.max) / 2))
-        .attr('y', 80)
-        .attr('text-anchor', 'middle')
+        .attr('x', 0)
+        .attr('y', 78)
+        .attr('text-anchor', 'start')
         .attr('font-size', '14px')
         .attr('font-weight', '600')
         .attr('fill', '#2d3748')
@@ -87,57 +106,22 @@ function createAgeVisualization(data) {
 
     // Highlight new range (55-64)
     svg.append('rect')
-        .attr('x', xScale(55))
+        .attr('x', xScale(ageData.pre_hr1.max))
         .attr('y', 90)
-        .attr('width', xScale(64) - xScale(55))
-        .attr('height', 40)
-        .attr('fill', '#319795')
+        .attr('width', xScale(ageData.post_hr1.max) - xScale(ageData.pre_hr1.max))
+        .attr('height', 30)
+        .attr('fill', '#fca5a5')
         .attr('rx', 4);
 
     // "NEW" label
     svg.append('text')
         .attr('x', xScale(59.5))
-        .attr('y', 114)
+        .attr('y', 108)
         .attr('text-anchor', 'middle')
-        .attr('font-size', '12px')
+        .attr('font-size', '10px')
         .attr('font-weight', '700')
         .attr('fill', 'white')
         .text('NEWLY AFFECTED');
-
-    // Age labels on bars
-    svg.append('text')
-        .attr('x', xScale(ageData.pre_hr1.min) + 5)
-        .attr('y', 55)
-        .attr('font-size', '13px')
-        .attr('font-weight', '600')
-        .attr('fill', 'white')
-        .text('18');
-
-    svg.append('text')
-        .attr('x', xScale(ageData.pre_hr1.max) - 5)
-        .attr('y', 55)
-        .attr('text-anchor', 'end')
-        .attr('font-size', '13px')
-        .attr('font-weight', '600')
-        .attr('fill', 'white')
-        .text('54');
-
-    svg.append('text')
-        .attr('x', xScale(ageData.post_hr1.min) + 5)
-        .attr('y', 115)
-        .attr('font-size', '13px')
-        .attr('font-weight', '600')
-        .attr('fill', 'white')
-        .text('18');
-
-    svg.append('text')
-        .attr('x', xScale(ageData.post_hr1.max) - 5)
-        .attr('y', 115)
-        .attr('text-anchor', 'end')
-        .attr('font-size', '13px')
-        .attr('font-weight', '600')
-        .attr('fill', 'white')
-        .text('64');
 
     // X axis
     const xAxis = d3.axisBottom(xScale)
@@ -200,14 +184,13 @@ function createParentVisualization(data) {
         .attr('y', 20)
         .attr('width', xScale(18))
         .attr('height', 30)
-        .attr('fill', '#718096')
-        .attr('opacity', 0.7)
+        .attr('fill', '#166534')
         .attr('rx', 4);
 
     svg.append('text')
-        .attr('x', xScale(9))
+        .attr('x', 0)
         .attr('y', 15)
-        .attr('text-anchor', 'middle')
+        .attr('text-anchor', 'start')
         .attr('font-size', '13px')
         .attr('font-weight', '600')
         .attr('fill', '#2d3748')
@@ -219,13 +202,13 @@ function createParentVisualization(data) {
         .attr('y', 80)
         .attr('width', xScale(14))
         .attr('height', 30)
-        .attr('fill', '#2c5282')
+        .attr('fill', '#166534')
         .attr('rx', 4);
 
     svg.append('text')
-        .attr('x', xScale(7))
+        .attr('x', 0)
         .attr('y', 75)
-        .attr('text-anchor', 'middle')
+        .attr('text-anchor', 'start')
         .attr('font-size', '13px')
         .attr('font-weight', '600')
         .attr('fill', '#2d3748')
@@ -237,8 +220,7 @@ function createParentVisualization(data) {
         .attr('y', 80)
         .attr('width', xScale(18) - xScale(14))
         .attr('height', 30)
-        .attr('fill', '#e53e3e')
-        .attr('opacity', 0.3)
+        .attr('fill', '#fca5a5')
         .attr('rx', 4);
 
     svg.append('text')
@@ -247,30 +229,8 @@ function createParentVisualization(data) {
         .attr('text-anchor', 'middle')
         .attr('font-size', '11px')
         .attr('font-weight', '700')
-        .attr('fill', '#9b2c2c')
+        .attr('fill', 'white')
         .text('LOST EXEMPTION');
-
-    // Arrow pointing to change
-    svg.append('line')
-        .attr('x1', xScale(14))
-        .attr('y1', 60)
-        .attr('x2', xScale(14))
-        .attr('y2', 72)
-        .attr('stroke', '#e53e3e')
-        .attr('stroke-width', 2)
-        .attr('marker-end', 'url(#arrowhead)');
-
-    // Arrow marker definition
-    svg.append('defs').append('marker')
-        .attr('id', 'arrowhead')
-        .attr('markerWidth', 10)
-        .attr('markerHeight', 10)
-        .attr('refX', 5)
-        .attr('refY', 3)
-        .attr('orient', 'auto')
-        .append('polygon')
-        .attr('points', '0 0, 10 3, 0 6')
-        .attr('fill', '#e53e3e');
 
     // X axis
     const xAxis = d3.axisBottom(xScale)
@@ -314,28 +274,33 @@ function createExemptionsTable(data) {
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Veterans</strong></td>
+                    <td><strong><span class="def-tooltip" tabindex="0" data-tip="An individual who served in the active military, naval, air, or space service. (Food and Nutrition Act §6(o), per FRA 2023; broader than 38 U.S.C. §101 — includes all discharge statuses.)">Veterans</span></strong></td>
                     <td class="status-yes">✓ Exempt</td>
                     <td class="status-no">✗ Not Exempt</td>
                 </tr>
                 <tr>
-                    <td><strong>Homeless</strong></td>
+                    <td><strong><span class="def-tooltip" tabindex="0" data-tip="An individual who lacks a fixed and regular nighttime residence, or whose primary nighttime residence is: a supervised shelter, a halfway house, a temporary stay (≤90 days) with another person, or a place not designed for sleeping. (7 CFR 271.2)">Homeless</span></strong></td>
                     <td class="status-yes">✓ Exempt</td>
                     <td class="status-no">✗ Not Exempt</td>
                 </tr>
                 <tr>
-                    <td><strong>Foster Youth (18-24)</strong></td>
+                    <td><strong><span class="def-tooltip" tabindex="0" data-tip="An individual aged 24 or younger who was in foster care under the responsibility of a State on their 18th birthday. Eligible until their 25th birthday regardless of whether the State extends foster care. (7 CFR 273.24(g))">Foster Youth (18-24)</span></strong></td>
                     <td class="status-yes">✓ Exempt</td>
                     <td class="status-no">✗ Not Exempt</td>
                 </tr>
                 <tr>
-                    <td><strong>Pregnant</strong></td>
+                    <td><strong><span class="def-tooltip" tabindex="0" data-tip="An individual who is pregnant, as verified per State agency procedures. (7 CFR 273.7(b)(1))">Pregnant</span></strong></td>
                     <td class="status-yes">✓ Exempt</td>
                     <td class="status-yes">✓ Exempt</td>
                 </tr>
                 <tr>
-                    <td><strong>Disabled</strong></td>
+                    <td><strong><span class="def-tooltip" tabindex="0" data-tip="An individual who receives federal or State disability benefits, or who is medically certified as physically or mentally unfit for employment. (7 CFR 273.7(b)(1))">Disabled</span></strong></td>
                     <td class="status-yes">✓ Exempt</td>
+                    <td class="status-yes">✓ Exempt</td>
+                </tr>
+                <tr>
+                    <td><strong><span class="def-tooltip" tabindex="0" data-tip="A member of a federally recognized Indian Tribe, as defined under the Indian Health Care Improvement Act (25 U.S.C. §1603(13)). (Added by H.R. 1)">Tribal Member</span></strong></td>
+                    <td class="status-no">✗ Not Exempt</td>
                     <td class="status-yes">✓ Exempt</td>
                 </tr>
             </tbody>
@@ -370,21 +335,20 @@ function createTimelineVisualization(data) {
         .attr('width', containerWidth)
         .attr('height', 250)
         .attr('role', 'img')
-        .attr('aria-label', 'Timeline from July 2025 to June 2026')
+        .attr('aria-label', 'Timeline from July 2025 to February 2026')
         .append('g')
         .attr('transform', `translate(${margin.left},${margin.top})`);
 
     // Timeline data
     const events = [
-        { date: new Date('2025-07-04'), label: 'Bill Signed', description: 'HR1 signed into law' },
-        { date: new Date('2025-09-30'), label: 'USDA Guidance', description: 'Implementation guidance released' },
-        { date: new Date('2025-12-01'), label: 'State Enforcement', description: 'Most states began checks' },
-        { date: new Date('2026-06-01'), label: 'First Terminations', description: 'First possible terminations' }
+        { date: new Date(2025, 6, 4), label: 'Bill Signed', description: 'HR1 signed into law' },
+        { date: new Date(2025, 10, 1), label: 'Enforcement Begins', description: 'States began full enforcement' },
+        { date: new Date(2026, 1, 1), label: 'First Terminations', description: 'First benefit terminations' }
     ];
 
     // Scale
     const xScale = d3.scaleTime()
-        .domain([new Date('2025-07-01'), new Date('2026-06-30')])
+        .domain([new Date(2025, 6, 1), new Date(2026, 1, 1)])
         .range([0, width]);
 
     // Timeline line
@@ -407,7 +371,7 @@ function createTimelineVisualization(data) {
             .attr('cx', x)
             .attr('cy', height / 2)
             .attr('r', 8)
-            .attr('fill', '#319795')
+            .attr('fill', '#4b5563')
             .attr('stroke', 'white')
             .attr('stroke-width', 2);
 
@@ -421,14 +385,17 @@ function createTimelineVisualization(data) {
             .attr('stroke-width', 1)
             .attr('stroke-dasharray', '3,3');
 
+        // Determine text anchor based on position
+        const anchor = i === 0 ? 'start' : i === events.length - 1 ? 'end' : 'middle';
+
         // Label
         svg.append('text')
             .attr('x', x)
             .attr('y', height / 2 + yOffset)
-            .attr('text-anchor', 'middle')
+            .attr('text-anchor', anchor)
             .attr('font-size', '13px')
             .attr('font-weight', '700')
-            .attr('fill', '#2c5282')
+            .attr('fill', '#2d3748')
             .text(event.label);
 
         // Date
@@ -436,7 +403,7 @@ function createTimelineVisualization(data) {
         svg.append('text')
             .attr('x', x)
             .attr('y', height / 2 + yOffset + (isEven ? -15 : 15))
-            .attr('text-anchor', 'middle')
+            .attr('text-anchor', anchor)
             .attr('font-size', '11px')
             .attr('fill', '#718096')
             .text(monthYear);

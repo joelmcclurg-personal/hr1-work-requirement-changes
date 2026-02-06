@@ -1,6 +1,6 @@
-# HR1 SNAP Work Requirements Visual Explainer
+# H.R. 1 SNAP Work Requirements Visual Explainer
 
-An interactive visual explainer showing how SNAP work requirements changed under HR1 (One Big Beautiful Bill Act) signed July 4, 2025.
+An interactive visual explainer showing how SNAP work requirements changed under H.R. 1 (One Big Beautiful Bill Act) signed July 4, 2025.
 
 ## Overview
 
@@ -69,7 +69,7 @@ hr1-snap-work-requirements/
 All policy details are verified against official sources:
 
 ### Primary Sources
-- [HR1 Legislative Text](https://www.congress.gov/bill/119th-congress/house-bill/1/text)
+- [H.R. 1 Legislative Text](https://www.congress.gov/bill/119th-congress/house-bill/1/text)
 - [USDA FNS OBBB Implementation Guidance](https://www.fns.usda.gov/snap/obbb-implementation)
 - [Propel SNAP Work Requirements Guide](https://www.propel.app/snap/snap-work-requirements-full-guide/)
 

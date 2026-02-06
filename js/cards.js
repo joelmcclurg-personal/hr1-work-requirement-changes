@@ -4,6 +4,15 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    setupCardInteractions();
+    setupShareButtons();
+    handleHashNavigation();
+});
+
+// Listen for hash changes for direct card links
+window.addEventListener('hashchange', handleHashNavigation);
+
+function setupCardInteractions() {
     const cards = document.querySelectorAll('.change-card');
 
     cards.forEach(card => {
@@ -21,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
+}
 
 function toggleCard(header, content) {
     const isExpanded = header.getAttribute('aria-expanded') === 'true';
@@ -40,79 +49,90 @@ function toggleCard(header, content) {
     }
 }
 
-// Age calculator
-document.addEventListener('DOMContentLoaded', () => {
-    const ageInput = document.getElementById('age-input');
-    const ageCheckBtn = document.getElementById('age-check-btn');
-    const ageResult = document.getElementById('age-result');
+// Share card functionality
+function setupShareButtons() {
+    const shareButtons = document.querySelectorAll('.share-card-btn');
 
-    if (ageCheckBtn && ageInput && ageResult) {
-        ageCheckBtn.addEventListener('click', () => {
-            const age = parseInt(ageInput.value);
+    shareButtons.forEach(button => {
+        button.addEventListener('click', async (e) => {
+            e.stopPropagation(); // Prevent card from expanding
 
-            if (isNaN(age) || age < 0 || age > 120) {
-                ageResult.textContent = 'Please enter a valid age.';
-                ageResult.className = 'result-text show maybe';
-                return;
-            }
+            const cardId = button.getAttribute('data-card-id');
+            const cardElement = document.getElementById(cardId);
+            const cardTitle = cardElement.querySelector('.card-title')?.textContent
+                || cardElement.querySelector('h3')?.textContent
+                || 'SNAP Work Requirements';
+            const cardSummary = cardElement.querySelector('.card-summary')?.textContent
+                || cardElement.querySelector('p')?.textContent
+                || '';
 
-            if (age < 18) {
-                ageResult.textContent = 'Under 18: Work requirements do not apply to you.';
-                ageResult.className = 'result-text show not-affected';
-            } else if (age >= 18 && age <= 54) {
-                ageResult.textContent = `Age ${age}: You were already subject to work requirements before HR1, and remain subject to them.`;
-                ageResult.className = 'result-text show affected';
-            } else if (age >= 55 && age <= 64) {
-                ageResult.textContent = `Age ${age}: You are NEWLY subject to work requirements under HR1. Before July 2025, you were exempt due to age.`;
-                ageResult.className = 'result-text show affected';
+            const shareData = {
+                title: `SNAP Work Requirements: ${cardTitle}`,
+                text: `${cardSummary} - Learn more about H.R. 1 changes to SNAP work requirements.`,
+                url: `${window.location.origin}${window.location.pathname}#${cardId}`
+            };
+
+            // Check if Web Share API is available (mobile devices)
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    // User cancelled or error occurred
+                    if (err.name !== 'AbortError') {
+                        fallbackCopyLink(shareData.url);
+                    }
+                }
             } else {
-                ageResult.textContent = `Age ${age}: Work requirements do not apply to you (over 64).`;
-                ageResult.className = 'result-text show not-affected';
+                // Fallback: Copy link to clipboard
+                fallbackCopyLink(shareData.url);
             }
         });
+    });
+}
 
-        // Allow Enter key in input
-        ageInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                ageCheckBtn.click();
+function fallbackCopyLink(url) {
+    navigator.clipboard.writeText(url).then(() => {
+        // Show brief "Copied!" message
+        const toast = document.createElement('div');
+        toast.className = 'copy-toast';
+        toast.textContent = 'Link copied to clipboard!';
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.classList.add('fade-out');
+            setTimeout(() => toast.remove(), 300);
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy link:', err);
+        alert(`Share this link: ${url}`);
+    });
+}
+
+// Support direct links to cards via hash anchors
+function handleHashNavigation() {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#card-')) {
+        const cardId = hash.substring(1);
+        const card = document.getElementById(cardId);
+        if (card) {
+            // Expand the card if it has expandable content (change-card)
+            const cardHeader = card.querySelector('.card-header');
+            const cardContent = card.querySelector('.card-content');
+            if (cardHeader && cardContent) {
+                cardHeader.setAttribute('aria-expanded', 'true');
+                cardContent.setAttribute('aria-hidden', 'false');
+                cardContent.style.maxHeight = cardContent.scrollHeight + 'px';
             }
-        });
+
+            // Scroll to card with offset for header
+            setTimeout(() => {
+                const headerOffset = 80;
+                const cardPosition = card.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({
+                    top: cardPosition - headerOffset,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
     }
-});
-
-// Children's age calculator
-document.addEventListener('DOMContentLoaded', () => {
-    const childrenInput = document.getElementById('children-input');
-    const childrenCheckBtn = document.getElementById('children-check-btn');
-    const childrenResult = document.getElementById('children-result');
-
-    if (childrenCheckBtn && childrenInput && childrenResult) {
-        childrenCheckBtn.addEventListener('click', () => {
-            const age = parseInt(childrenInput.value);
-
-            if (isNaN(age) || age < 0 || age > 20) {
-                childrenResult.textContent = 'Please enter a valid age.';
-                childrenResult.className = 'result-text show maybe';
-                return;
-            }
-
-            if (age < 14) {
-                childrenResult.textContent = `Child under 14: You remain exempt from work requirements (both before and after HR1).`;
-                childrenResult.className = 'result-text show not-affected';
-            } else if (age >= 14 && age < 18) {
-                childrenResult.textContent = `Child age ${age}: You are NEWLY subject to work requirements under HR1. Before July 2025, parents with children under 18 were exempt.`;
-                childrenResult.className = 'result-text show affected';
-            } else {
-                childrenResult.textContent = `Child age ${age}: Having a child 18 or older did not provide exemption before or after HR1. You may qualify for other exemptions.`;
-                childrenResult.className = 'result-text show maybe';
-            }
-        });
-
-        // Allow Enter key in input
-        childrenInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                childrenCheckBtn.click();
-            }
-        });
-    }
-});
+}
