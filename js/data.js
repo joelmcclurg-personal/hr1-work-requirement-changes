@@ -13,7 +13,6 @@ async function loadData() {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         requirementsData = await response.json();
-        console.log('Requirements data loaded successfully');
 
         // Dispatch custom event to notify other scripts
         const event = new CustomEvent('dataLoaded', { detail: requirementsData });

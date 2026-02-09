@@ -63,7 +63,7 @@ function createAgeVisualization(data) {
         .attr('font-size', '14px')
         .attr('font-weight', '600')
         .attr('fill', '#2d3748')
-        .text('Before HR1');
+        .text('Before H.R. 1');
 
     // "18" label on left edge of Before HR1 bar
     svg.append('text')
@@ -86,6 +86,9 @@ function createAgeVisualization(data) {
         .text('54');
 
     // New rule bar
+    // First segment of new rule bar (18-54) — intentionally uses pre_hr1.max as
+    // the right edge so this bar aligns with the old-rule bar above, creating a
+    // split-bar that visually distinguishes the "same" range from the "newly affected" range.
     svg.append('rect')
         .attr('x', xScale(ageData.post_hr1.min))
         .attr('y', 90)
@@ -102,7 +105,7 @@ function createAgeVisualization(data) {
         .attr('font-size', '14px')
         .attr('font-weight', '600')
         .attr('fill', '#2d3748')
-        .text('After HR1');
+        .text('After H.R. 1');
 
     // Highlight new range (55-64)
     svg.append('rect')
@@ -194,7 +197,7 @@ function createParentVisualization(data) {
         .attr('font-size', '13px')
         .attr('font-weight', '600')
         .attr('fill', '#2d3748')
-        .text('Before HR1: Exempt');
+        .text('Before H.R. 1: Exempt');
 
     // New rule (exempt until 14)
     svg.append('rect')
@@ -212,7 +215,7 @@ function createParentVisualization(data) {
         .attr('font-size', '13px')
         .attr('font-weight', '600')
         .attr('fill', '#2d3748')
-        .text('After HR1: Exempt');
+        .text('After H.R. 1: Exempt');
 
     // Highlight lost exemption (14-18)
     svg.append('rect')
@@ -268,8 +271,8 @@ function createExemptionsTable(data) {
             <thead>
                 <tr>
                     <th>Category</th>
-                    <th>Before HR1</th>
-                    <th>After HR1</th>
+                    <th>Before H.R. 1</th>
+                    <th>After H.R. 1</th>
                 </tr>
             </thead>
             <tbody>
@@ -341,7 +344,7 @@ function createTimelineVisualization(data) {
 
     // Timeline data
     const events = [
-        { date: new Date(2025, 6, 4), label: 'Bill Signed', description: 'HR1 signed into law' },
+        { date: new Date(2025, 6, 4), label: 'Bill Signed', description: 'H.R. 1 signed into law' },
         { date: new Date(2025, 10, 1), label: 'Enforcement Begins', description: 'States began full enforcement' },
         { date: new Date(2026, 2, 1), label: 'First Terminations', description: 'First benefit terminations' }
     ];
