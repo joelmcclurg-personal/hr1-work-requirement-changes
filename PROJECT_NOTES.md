@@ -413,4 +413,42 @@ All Exemptions Removed card content verified against:
 
 ---
 
-*Last updated: February 5, 2026*
+### Session 8: Critical Date Correction — Feb 1 → March 1 Terminations (February 6, 2026)
+
+**Goal:** Fix incorrect first termination date. Our infographic (and most news reporting) was counting November 2025 as a countable ABAWD month. Per FNS guidance issued November 13, 2025, November is NOT a countable month due to the government shutdown. This shifts the first terminations from February 1 to March 1, 2026.
+
+**Root cause of the error:**
+- FNS [ABAWD Exceptions Implementation memo](https://www.fns.usda.gov/snap/obbb-abawd-exemptions-implementation) (October 2025) signaled Nov 1 enforcement start
+- FNS [Benefit Issuance guidance](https://www.fns.usda.gov/snap/benefit-issuance-nov13) (Nov 13, 2025) then instructed all states NOT to count November as a countable month
+- Most reporters and advocacy orgs only read the first document, producing the wrong math: Nov + Dec + Jan = 3 months → Feb 1 terminations
+- Correct math: Dec (month 1) + Jan (month 2) + Feb (month 3) → **March 1 first terminations**
+
+**Widespread misinformation identified:**
+- ABC News, FOX 29, ABC7 Chicago, Newsweek, Nasdaq, Think Global Health, Propel, and even some state agencies (Oregon DHS) were framing Feb 1 as when people lose benefits
+- Two overlapping errors: (1) counting November as a countable month, and (2) conflating "enforcement starts Feb 1" (for late-start states) with "benefits terminated Feb 1"
+- For states starting Feb 1 (OH, IL), first terminations would actually be May 1
+- New York (OTDA) was one state that correctly listed March 1
+
+**Key corrections:**
+
+| Item | Was | Corrected To | Why |
+|---|---|---|---|
+| First terminations date | Feb 1, 2026 | **March 1, 2026** | November is not a countable month per FNS Nov 13 guidance |
+| Timeline viz endpoint | `new Date(2026, 1, 1)` | `new Date(2026, 2, 1)` | JS month index: 2 = March |
+| Timeline scale domain | July 2025 – Feb 2026 | **July 2025 – March 2026** | Extended to fit corrected date |
+| Timeline HTML | 3 items | **4 items** | Added Nov 13, 2025 FNS guidance event with source link |
+| Termination language | "First benefit terminations for non-compliance" | **"First benefit terminations will generally begin being enforced, but some states may have delayed implementation"** | Hedged for state variation |
+| Sources section | 3 primary sources | **5 primary sources** | Added FNS ABAWD Exemptions Implementation + FNS Nov 13 Benefit Issuance guidance |
+| JSON note | "Nov + Dec + Jan = 3 ABAWD months" | **"November is NOT a countable month per FNS Nov 13, 2025 guidance. Dec + Jan + Feb = 3 ABAWD countable months"** | Corrected explanation |
+
+**Files Modified:**
+1. `index.html` — Corrected date, added Nov 13 timeline event, hedged language, added 2 FNS sources
+2. `js/visualizations.js` — Updated timeline endpoint and scale domain to March 2026
+3. `data/requirements.json` — Corrected date, updated note, updated timestamps
+4. `PROJECT_NOTES.md` — Added this session entry
+
+**Status:** ✅ Corrected and deployed
+
+---
+
+*Last updated: February 6, 2026*
