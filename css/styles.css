@@ -248,6 +248,29 @@ strong {
     opacity: 0;
 }
 
+/* Capture states for share-as-image */
+.share-card-btn.sharing {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.capturing-card .share-card-btn,
+.capturing-card .expand-icon {
+    visibility: hidden !important;
+}
+
+.capture-watermark {
+    display: none;
+    text-align: right;
+    font-size: 0.75rem;
+    color: #a0aec0;
+    padding: 0.5rem 1.25rem;
+}
+
+.capturing-card .capture-watermark {
+    display: block;
+}
+
 .card-content {
     max-height: 0;
     overflow: hidden;
