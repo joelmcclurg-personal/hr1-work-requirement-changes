@@ -138,6 +138,19 @@ function setupShareButtons() {
                             showToast('Image downloaded!');
                         }
                     }
+                } else if (navigator.share) {
+                    // Fallback: share URL without file (still opens share sheet)
+                    downloadBlob(blob, fileName);
+                    try {
+                        await navigator.share({
+                            title: `SNAP Work Requirements: ${cardTitle}`,
+                            url: shareUrl,
+                        });
+                    } catch (err) {
+                        if (err.name !== 'AbortError') {
+                            showToast('Image downloaded!');
+                        }
+                    }
                 } else {
                     // Desktop fallback: download image + copy link
                     downloadBlob(blob, fileName);
