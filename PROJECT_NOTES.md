@@ -451,4 +451,36 @@ All Exemptions Removed card content verified against:
 
 ---
 
-*Last updated: February 6, 2026*
+### Session 9: Code Review Fixes (February 9, 2026)
+
+**Goal:** Address 3 Important and 5 Minor issues identified during code review. All text/CSS cleanup — no architectural changes.
+
+**Important fixes:**
+
+| # | Issue | Fix |
+|---|---|---|
+| I1 | `og:image` and `twitter:image` meta tags reference non-existent `social-preview.png` | Removed both image meta tags; changed twitter card type from `summary_large_image` to `summary` |
+| I2 | D3 visualizations display informal "HR1" instead of proper "H.R. 1" | Updated all 7 user-visible text strings in `js/visualizations.js` |
+| I3 | Stale aria-label says "under HR1" | Changed to "under H.R. 1" on exemptions table container |
+
+**Minor fixes:**
+
+| # | Issue | Fix |
+|---|---|---|
+| M1 | Footer GitHub link points to wrong repo (`hr1-snap-work-requirements`) | Changed to correct repo name (`hr1-work-requirement-changes`) |
+| M2 | Split-bar width logic in age viz is non-obvious | Added explanatory comment above the rect element |
+| M3 | `.cta-button` CSS rules (~22 lines) are dead code — no element uses them | Removed entirely |
+| M4 | Print styles hide `.cta-button` and `.modal` which don't exist | Removed both from print selector |
+| M5 | `console.log('Requirements data loaded successfully')` left in production | Deleted the line |
+
+**Files Modified:**
+1. `index.html` — I1, I3, M1
+2. `js/visualizations.js` — I2, M2
+3. `css/styles.css` — M3, M4
+4. `js/data.js` — M5
+
+**Status:** ✅ Committed and pushed to GitHub
+
+---
+
+*Last updated: February 9, 2026*
